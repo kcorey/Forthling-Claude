@@ -12,9 +12,21 @@ forth -bundle FILE.fth [-o OUT]  write a standalone binary that runs FILE.fth
 
 ## Why it exists
 
-Forth is the smallest interesting language that is still genuinely useful: a
-stack, a dictionary, and a compiler you can extend from inside the language.
-This implementation is built around three goals.
+This repo is one arm of an experiment: can a coding agent build a *real*
+language, not a toy, from a single informal brief?
+
+The same job was given to Qwen3.8 running under OpenCode, first on a Mac and
+then on a PC. Both attempts hit repeated failures across two days and still
+have not finished the job. This version was built with Claude Code (Opus): it
+took about an hour and worked after a couple of prompts. The
+[prompt that started it](#the-prompt) is below, so you can run the comparison
+on your own setup.
+
+Forth is a good test subject. It is the smallest interesting language that is
+still genuinely useful: a stack, a dictionary, and a compiler you can extend
+from inside the language. Getting one right means getting an inner interpreter,
+a compiler, terminal I/O and a test suite all working together. The result here
+is built around three goals.
 
 **Small enough to read.** About 2,500 lines of Go and one page of Forth. The
 whole language, the compiler, the terminal handling and the bundler fit in a
@@ -32,6 +44,32 @@ time, no interpreter to ship alongside it.
 The `samples/` directory is the point of the exercise: a colour Mandelbrot
 explorer, a real-time lunar lander, a perfect-play tic-tac-toe, Conway's Life,
 Hammurabi, snake, and a prime sieve, all written in the language itself.
+
+## The prompt
+
+This is the brief, near enough as it was given. Paste it into a coding agent in
+an empty directory and see what comes back.
+
+> In this directory, build a version of Forth written in Go.
+>
+> It should have three modes. Run `forth` by itself and you get a REPL. Run
+> `forth` with a filename and it executes that Forth script. Run
+> `forth -bundle <filename>` and it bundles that script into a Forth binary, so
+> that running the binary executes the script. That way I can share a single
+> binary with the new code in it.
+>
+> I want a samples directory with several good demos: a Mandelbrot viewer that
+> lets you zoom and rotate, tic-tac-toe, Hammurabi, that sort of thing. Enough
+> to show the language off.
+>
+> Keep the language fairly minimal but make it fast. It is an optimisation
+> problem: enough Forth words to carry the samples, but still a smallish Forth.
+>
+> This is a language, so I want an extensive unit test suite: every word in the
+> language tested and validated as working.
+
+The lunar lander, the momentum arrows, the window-filling layout and the
+break-up animation came from a handful of follow-up prompts after that.
 
 ## Build and test
 
