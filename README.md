@@ -123,6 +123,8 @@ result is about 2.7 MB and runs anywhere the interpreter itself would.
 
 ## The language
 
+Every word, with its stack diagram, is in **[MANUAL.md](MANUAL.md)**.
+
 64-bit integer cells with a **separate floating-point stack** (a subset of the
 ANS FLOATING word set), byte-addressed data space, floored division, and a
 case-insensitive dictionary. 255 words in all: about 210 Go primitives plus
