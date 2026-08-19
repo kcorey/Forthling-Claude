@@ -157,6 +157,9 @@ character-at-a-time input, and `fg`/`bg` take 256-colour palette indices.
 
 ## Samples
 
+These are the best way in: read one alongside
+**[MANUAL.md](MANUAL.md)**, which gives the stack diagram for every word they use.
+
 | File | What it shows |
 |---|---|
 | `samples/lander.fth` | real-time lunar lander in colour, sized to the terminal window: gravity, a flickering exhaust plume, momentum arrows, scored landing pads, and a break-up animation when you get it wrong. `lander.fth auto` flies itself. |
